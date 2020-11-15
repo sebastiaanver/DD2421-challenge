@@ -1,0 +1,38 @@
+### DATA ###
+target_name: "y"
+dropped_columns: ["Unnamed: 0"]
+dropped_columns_train: ["id"]
+labels: "none"
+
+scaler: "robust"  # Choose from [minmax, standard, robust].
+test: False # If test is false all train data is used.
+
+### TUNING ###
+hyperparameter_tuning: "hyperopt"
+find_optimal_model: True
+timeout: 1000
+evals: 300
+
+### MODELS ###
+# Models with default parameters (optimal from previous hyperopt run).
+models:
+  gradient_boosting:
+    n_estimators: 211
+    max_depth: 3
+    learning_rate: 0.25
+    max_features: None
+  xgboost:
+    gamma: 0.38
+    learning_rate: 0.44
+    max_depth: 6
+    min_child_weight: 1.0
+    n_estimators: 35
+    subsample: 0.82
+  random_forest:
+    max_depth: 7
+    n_estimators: 147
+    max_features: "sqrt"
+  svm:
+    C: 3.8882703519387203
+    gamma: 0.2041189309227564
+    kernel: "rbf"
